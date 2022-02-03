@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import LineChart from "./Charts/LineChart";
+import PieChart from "./Charts/PieChart";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
-function App() {
+function App(darkmode) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="DarkApp">
+        <Header />
+        <Routes>
+          <Route path="/" caseSensitive={false} element={<PieChart />} />
+        </Routes>
+        <Routes>
+          <Route path="/line" caseSensitive={false} element={<LineChart />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
